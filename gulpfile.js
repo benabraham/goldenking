@@ -32,9 +32,7 @@ gulp.task('csscompile', ['cssclean'], function(){
 		.src('src/index.scss') // zdroj stylopisů
 		.pipe(sass().on('error', sass.logError)) // výpíše chybu, pokud kompilace selže
 		.pipe(sourcemaps.init()) // vytvoří sourcemap => užitečné při ladění v devTools
-		.pipe(postcss([autoprefixer({ // doplní prefixy pro prohlížeče, které to potřebují
-			// browsers: ['last 2 versions, >.8%, IE8']
-		})]))
+		.pipe(postcss([autoprefixer()])) // doplní prefixy pro prohlížeče, které to potřebují
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('donations/static')) // sem zapíše výsledné CSS
 		.pipe(browserSync.stream()); // promítne změny CSS do stránky ‒ bez reloadu
